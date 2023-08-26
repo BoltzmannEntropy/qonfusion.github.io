@@ -186,7 +186,9 @@
                                    The Marsaglia polar method serves as a paradigmatic example of 
                                    how quantum random bits can seamlessly supplant classical 
                                    pseudo-random numbers in a Stable Diffusion (SD) model pipeline, 
-                                   specifically in the forward diffusion phase 
+                                   specifically in the forward diffusion phase .
+
+
                             </p>
                         </div>
                     </div>
@@ -208,7 +210,11 @@
                         <p>
                             <p>
                             In this research, we employ elementary non-parametric quantum ansätze to generate quantum Gaussian probabilistic samples, 
-                            taking advantage of superposition and thereby obviating the necessity for parameter training.                                                                 
+                            taking advantage of superposition and thereby obviating the necessity for parameter training.
+                            Displayed here is an animation that illustrates a segment of the pipeline, along with the quantum noise that can be employed in the forward phase of an SD model:<br>
+                            <img src="./static/images/ezgif-1-00a0e2b532.gif" alt="Quantum Gaussian Generator."
+                            class="method-overview-full-img  method-overview" draggable="false" />
+
                             </p><br>
                             <p>
                             The investigation introduces quantum counterparts in three distinct applications: 
@@ -226,10 +232,7 @@
                             divergence, and statistical permutation tests, thereby substantiating our
                             substantial contributions to the domain of quantum machine learning.  
                             <br><br> 
-                            An animation, exemplfying the pipeline and teh quantum noise that can be used the forward process of a SD model is displayed here:<br>
-                            <img src="./static/images/ezgif-1-00a0e2b532.gif" alt="Quantum Gaussian Generator."
-                            class="method-overview-full-img  method-overview" draggable="false" />
-                            
+
                             
                         </p>                        
                     </div>
@@ -344,10 +347,18 @@ def Q_PQC_UNIFORM_DIST_ANZATS(weights, useRot=True):
                         (a value between 0 and 1). Sampling leads to the collapse of the quantum state,
                         whereas expectation values allow for continued quantum operations.</p>
 
-                             <a target="_blank"
-                                href="https://github.com/Stability-AI/stablediffusion">QonFusion source code</a>
-                            
+                        See: <a target="_blank"
+                                href="https://github.com/Stability-AI/stablediffusion">QonFusion source code.</a><br>
+
+                        Presented herein is a depiction of the application of our Quantum Gaussian generator in simulating Brownian motion.
+                        This serves as a quality assessment of our Quantum Random Number Generator (QRNG).
+                        In typical Brownian motion, if the mean of the Gaussian distribution deviates from zero,
+                        the resultant motion ceases to resemble true Brownian behavior. In contrast,
+                        our QRNG successfully captures the essence of Brownian motion.<br>
+                            <img src="./static/images/brownian_fig_6.png" alt="Quantum Gaussian Generator."
+                            class="method-overview-full-img  method-overview" draggable="false" />
                         </p>
+
                     </div>
                 </div>
             </div>
