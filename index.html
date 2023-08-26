@@ -348,15 +348,7 @@ def Q_PQC_UNIFORM_DIST_ANZATS(weights, useRot=True):
                         whereas expectation values allow for continued quantum operations.</p>
 
                         See: <a target="_blank"
-                                href="https://github.com/Stability-AI/stablediffusion">QonFusion source code.</a><br>
-
-                        Presented herein is a depiction of the application of our Quantum Gaussian generator in simulating Brownian motion.
-                        This serves as a quality assessment of our Quantum Random Number Generator (QRNG).
-                        In typical Brownian motion, if the mean of the Gaussian distribution deviates from zero,
-                        the resultant motion ceases to resemble true Brownian behavior. In contrast,
-                        our QRNG successfully captures the essence of Brownian motion.<br>
-                            <img src="./static/images/brownian_fig_6.png" alt="Quantum Gaussian Generator."
-                            class="method-overview-full-img  method-overview" draggable="false" />
+                                href="https://github.com/Stability-AI/stablediffusion">QonFusion source code.</a><br><br>
                         </p>
 
                     </div>
@@ -366,7 +358,59 @@ def Q_PQC_UNIFORM_DIST_ANZATS(weights, useRot=True):
     </section>
     <!--/ Derivation. -->
 
-    
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-3">Statistical tests</h2>
+                    <div class="content has-text-justified">
+                        <p>
+
+
+                            <p>The quality of the quantum Gaussian distribution is validated using statistical tests <a href="#ref1">[1]</a>, <a href="#ref2">[2]</a>, <a href="#ref3">[3]</a> such as the Kolmogorov-Smirnov test as depicted in the table below.</p>
+
+                            <table border="1" style="width:100%; text-align:center; margin:auto;">
+                              <caption style="text-align:left;">The quantum random Gaussian generator was scrutinized via an array of statistical tests, comparing the quantum generated samples to classical Gaussian samples. The results of the Kolmogorov-Smirnov (KS) test revealed a statistic of \( S = 0.052 \) and a \( p \)-value of \( p = 0.124 \). The null hypothesis, proposing that the quantum and classical samples originated from the same continuous distribution, could not be dismissed given the \( p \)-value surpassing the conventional threshold of \( 0.05 \). This implies that the quantum samples exhibit no significant deviation from the classical Gaussian samples. The Maximum Mean Discrepancy (MMD), a metric quantifying the difference between the mean embeddings of two distributions in a Reproducing Kernel Hilbert Space (RKHS), registered a value of \( MMD = 0.001 \). This low MMD value suggests a negligible difference between the quantum and classical Gaussian distributions' mean embeddings in the RKHS, thereby indicating a close match between the two distributions. The Kullback-Leibler (KL) divergence, assessing the quantum distribution's divergence from the classical Gaussian distribution, yielded a value of \( D_{KL} = 0.030 \). This relatively small KL divergence value signifies that the quantum distribution does not significantly diverge from the classical Gaussian distribution. These findings are in line with the results from the KS test and MMD, further underscoring the similarity between the quantum and classical Gaussian distributions.</caption>
+                              <tr>
+                                <th>Test</th>
+                                <th>Value</th>
+                              </tr>
+                              <tr>
+                                <td>KS Statistic</td>
+                                <td>0.052</td>
+                              </tr>
+                              <tr>
+                                <td>KS P-Value</td>
+                                <td>0.124</td>
+                              </tr>
+                              <tr>
+                                <td>MMD</td>
+                                <td>0.001</td>
+                              </tr>
+                              <tr>
+                                <td>KL Divergence</td>
+                                <td>0.030</td>
+                              </tr>
+                            </table>
+
+                            Moreover, presented herein is a depiction of the application of our Quantum Gaussian generator in simulating Brownian motion.
+                            This serves as a quality assessment of our Quantum Random Number Generator (QRNG).
+                            In typical Brownian motion, if the mean of the Gaussian distribution deviates from zero,
+                            the resultant motion ceases to resemble true Brownian behavior. In contrast,
+                            our QRNG successfully captures the essence of Brownian motion.<br><br>
+                            <img src="./static/images/brownian_fig_6.png" alt="Quantum Gaussian Generator."
+                            class="method-overview-full-img  method-overview" draggable="false" />
+                            <br>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
    
         
 
