@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta charset="utf-8">
+    <meta property="og:title" content="Qonfusion" />
+    <meta property="og:description" content="Quantum Circuits for Gaussian Random Number Generation: A Non-parametric Approach to the Stable Diffusion Noise Corrupter." />
+    <meta property="og:url" content="https://qonfusion.github.io/" />
+    <meta property="og:image" content="https://qonfusion.github.io//static/images/preview.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta name="description"
+        content="Quantum Circuits for Gaussian Random Number Generation: A Non-parametric Approach to the Stable Diffusion Noise Corrupter." />
+    <meta name="keywords"
+        content="diffusion models, generative models, zero-shot learning, supervised learning, classification, Bayes' theorem, evidence lower bound (ELBO), Monte Carlo estimation, computer vision, deep learning, robustness" />
+    <meta name="viewport" content="initial-scale=1" />
+    
+    <title>Diffusion Classifier</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RYWGEJGP6S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-RYWGEJGP6S');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="stylesheet" href="https://use.typekit.net/iag3ven.css">
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-coy.min.css"/> -->
+    <link rel="stylesheet" href="./static/css/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.min.js">
+    </script>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+
+    <!-- mathjax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        code.python {
+          display: block;
+          white-space: pre;
+          border: 1px solid #ccc;
+          padding: 10px;
+          margin: 10px;
+          background-color: #f9f9f9;
+          color: #333;
+        }
+        /* Add more styles for keywords, numbers, etc. if needed */
+      </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <p style="padding: 20px;" />
+                        <h1 class="title is-1 publication-title">
+                            <span id="main-title">
+                                Quantum Circuits for Gaussian Random Number Generation: A Non-parametric Approach to the Stable Diffusion Noise Corrupter.
+                            </span>
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <!-- TODO: FIX -->
+                            <span class="author-block">
+                                <a href="https://t.me/BoltzmannQ" target="_blank">Shlomo Kashani.</a>
+                            </span>
+                            &nbsp;
+                            &nbsp;                            
+                        </div>
+                        <p style="padding: 0.25rem;" />
+                        <div class="is-size-5 publication-authors">
+                            <!-- <span class="author-block">Johns Hopkins University</span> -->
+                            <!-- <br style="line-height: 2px" /> -->
+                            <!-- <span class="author-block" style="font-size: 0.7em; font-style: italic;"><sup>*</sup>Equal
+                                contribution</span> -->
+
+                        </div>
+                        <div id="method-overview-wrapper">
+                            <img src="./static/images/jhu.png" alt="JHU"
+                                class="method-overview-full-img  method-overview" draggable="false" width="30%" />
+                        </div>
+
+                        <p style="padding: 20px;" />
+
+                        <div class="buttons is-centered">
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://arxiv.org/abs/2303.16203" target="_blank"
+                                    style="text-decoration:none;">
+                                    <span class="icon is-small">
+                                        <i class="ai ai-arxiv"></i>
+                                    </span>
+                                    <span>arXiv</span>
+                                </a>
+                            </button>
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="./static/docs/paper.pdf" target="_blank">
+                                    <span class="icon is-small">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </span>
+                                    <span>pdf</span>
+                                </a>
+                            </button>                            
+                            <button class="external-link button is-medium is-ghost publication-links is-rounded">
+                                <a href="https://github.com/BoltzmannEntropy" target="_blank">
+                                    <span class="icon is-small">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>code</span>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- hack to pull the below up vertically -->
+    <span style="display:block; margin-top:-1.75em;"/>
+
+        <!-- Method Overview -->
+    <section class="section" id="method-overview">
+        <div class="container is-max-widescreen">
+            <div class="columns is-centered has-text-centered">
+                <div class="column" style="border-radius: 10px; background-color: rgb(245,245,245)">
+                    <h2 class="title is-3">
+                        <span class="method-name">"Quantum Gaussian Number Generation"</span>
+                    </h2>
+                    <p style="padding: 10px;" />
+                    <div id="method-overview-wrapper">
+                        <img src="./static/images/arch.png" alt="Quantum Gaussian Generator."
+                            class="method-overview-full-img  method-overview" draggable="false" />
+                    </div>
+                            <p style="padding: 10px;" />
+                            <b>An illustrative depiction of our proposed pipeline.</b>    
+                        <div class="method-overview-text has-text-justified">
+                            <p>                                                                
+                                <span style="border-radius: 50%; border: 2px solid black; padding: 1px; font-weight: bold;">1</span> 
+                                Utilizing N qubits, an initial non-parametric quantum circuit, 
+                                founded on Hadamard transformations, engenders a uniform distribution across
+                                 2^N discrete values through sampled measurement outcomes, rather than
+                                  expectation values. 
+                                  These outcomes are subsequently transmuted into equidistant angles, 
+                                  which are then channeled into a static quantum circuit that neither 
+                                  adapts nor learns, with the purpose of inducing stochastic rotations.
+                                  <span style="border-radius: 50%; border: 2px solid black; padding: 1px; font-weight: bold;">2</span> This static assembly, encompassing M>N qubits, 
+                                   functions as follows: a Hadamard gate is applied to each qubit, 
+                                   thus creating a superposition of states. Upon activation of the \texttt{useRot} flag, 
+                                   the circuit administers a rotation to every qubit, utilizing 
+                                   the \textbf{previously generated angles as the parameters for these rotations}. 
+                                   The output <span style="border-radius: 50%; border: 2px solid black; padding: 1px; font-weight: bold;">3</span> from this circuit is then employed in the 
+                                   <span style="border-radius: 50%; border: 2px solid black; padding: 1px; font-weight: bold;">4</span> Marsaglia polar method to transmute the uniform distribution 
+                                   into a zero-mean Gaussian <span style="border-radius: 50%; border: 2px solid black; padding: 1px; font-weight: bold;">5</span>. This transformation 
+                                   is achieved through the equation \(\mathbf{Z = \sqrt{-2\log U}\cos(2\pi V)}\), 
+                                   where U and V are two uniform random numbers, and by substituting our 
+                                   quantumly-generated uniform random bits for $U$ and $V$, we synthesize a 
+                                   source of quantum Gaussian random variables. <span style="border-radius: 50%; border: 2px solid black; padding: 1px; font-weight: bold;">6</span> 
+                                   The Marsaglia polar method serves as a paradigmatic example of 
+                                   how quantum random bits can seamlessly supplant classical 
+                                   pseudo-random numbers in a Stable Diffusion (SD) model pipeline, 
+                                   specifically in the forward diffusion phase 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Method Overview -->
+
+    <!-- <p style="padding: 10px;" /> -->
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            <p>
+                            In this research, we employ elementary non-parametric quantum ansätze to generate quantum Gaussian probabilistic samples, 
+                            taking advantage of superposition and thereby obviating the necessity for parameter training.                                                                 
+                            </p><br>
+                            <p>
+                            The investigation introduces quantum counterparts in three distinct applications: 
+                            first, as a substitute for conventional random number generators such as <b>torch.rand</b>; 
+                            second, as a Gaussian noise perturbation in the forward phase of a Stable Diffusion (SD) model; 
+                            and third, in the emulation of reversible stochastic differential equations (SDEs), 
+                            reminiscent of Brownian motion. 
+                            </p><br>    
+                            
+                            <br>                            
+                            To support this endeavor, we crafted QonFusion, a resilient Python library that 
+                            synergizes with PyTorch and PennyLane, thus forming a nexus between the quantum and classical domains. 
+                            The rigor of our inquiry is corroborated through exhaustive statistical evaluations, 
+                            encompassing Kolmogorov-Smirnov, Maximum Mean Discrepancy, Kullback-Leibler 
+                            divergence, and statistical permutation tests, thereby substantiating our
+                            substantial contributions to the domain of quantum machine learning.  
+                            <br><br> 
+                            An animation, exemplfying the pipeline and teh quantum noise that can be used the forward process of a SD model is displayed here:<br>
+                            <img src="./static/images/ezgif-1-00a0e2b532.gif" alt="Quantum Gaussian Generator."
+                            class="method-overview-full-img  method-overview" draggable="false" />
+                            
+                            
+                        </p>                        
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
+    <!-- <p style="padding: 20px;" /> -->
+
+    <!-- Derivation. -->
+    <section>
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-3">
+                        Generating uniform and Gaussian distributions. 
+                    </h2>
+                    <div class="content has-text-justified">
+                        <p class="equation-text">
+                            We first utilize N qubits, with non-parametric quantum circuit generating a uniform distribution across
+                             2^N discrete values. The output is then fed to the following circuit: <br>
+                            <img src="./static/images/QuantumRandomUniformGenerator_ansatz_qubits_3.png" alt="PennyLane quantum circuit"
+                            class="method-overview-full-img  method-overview" draggable="false" width="75%"/><br>
+                            The mathematical representation of this 3-qubit system undergoing a Hadamard transformation 
+                            followed by rotations can be formulated as follows:<br>
+                            <!-- Include MathJax script in the HTML head -->
+
+                                <!-- Include the equations in the HTML body -->
+                                <p>
+                                <!-- Hadamard Matrix -->
+                                The Hadamard matrix \( H \) is given by:
+                                \[
+                                \begin{equation}
+                                H = \frac{1}{\sqrt{2}} \left[ \begin{array}{cc} 1 & 1 \\ 1 & -1 \end{array} \right]
+                                \end{equation}
+                                \]
+
+                                <!-- 3-Qubit Hadamard Operation -->
+                                The 3-Qubit Hadamard operation \( H^{\otimes 3} \) is:
+                                \[
+                                \begin{equation}
+                                H^{\otimes 3} = H \otimes H \otimes H
+                                \end{equation}
+                                \]
+
+                                <!-- General Rotation Operator -->
+                                The general rotation operator \( R(\theta, \phi, \lambda) \) is:
+                                \[
+                                \begin{equation}
+                                R(\theta, \phi, \lambda) = \left[ \begin{array}{cc} \cos\left(\frac{\theta}{2}\right) & -e^{i\lambda}\sin\left(\frac{\theta}{2}\right) \\ e^{i\phi}\sin\left(\frac{\theta}{2}\right) & e^{i(\phi+\lambda)}\cos\left(\frac{\theta}{2}\right) \end{array} \right]
+                                \end{equation}
+                                \]
+
+                                <!-- 3-Qubit Rotation Operation -->
+                                The 3-Qubit rotation operation \( R^{\otimes 3} \) is:
+                                \[
+                                \begin{equation}
+                                R^{\otimes 3} = R(\theta_1, \phi_1, \lambda_1) \otimes R(\theta_2, \phi_2, \lambda_2) \otimes R(\theta_3, \phi_3, \lambda_3)
+                                \end{equation}
+                                \]
+
+                                <!-- Complete 3-Qubit Operation -->
+                                The complete 3-Qubit operation \( |\psi'\rangle \) is:
+                                \[
+                                \begin{equation}
+                                |\psi'\rangle = (R^{\otimes 3} \otimes H^{\otimes 3}) |\psi\rangle
+                                \end{equation}
+                                \]
+                                </p>
+
+
+                        </p>
+                        
+                        <p class="equation-text">
+                            Here we provide the code:<br>
+                            <code class="python">
+def Q_PQC_UNIFORM_DIST_ANZATS(weights, useRot=True):
+    for i in range(n_qubits):
+        qml.Hadamard(wires=i)
+    if useRot:
+        qml.Rot(weights[0], weights[1], weights[2], wires=0)
+        qml.Rot(weights[3], weights[4], weights[5], wires=1)
+        qml.Rot(weights[6], weights[7], weights[8], wires=2)
+    _expectations = [qml.sample(qml.PauliZ(i)) 
+                        for i in range(n_qubits)]
+    return _expectations
+                                </code>
+
+                             <a target="_blank"
+                                href="https://github.com/Stability-AI/stablediffusion">QonFusion source code</a>
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ Derivation. -->
+
+    
+   
+        
+
+    <section class="section" id="paper">
+        <div class="container is-mobile">
+            <div class="columns is-centered has-text-centered">
+                <div class="container content">
+                    <h2 class="title is-3">BibTeX</h2>
+                    <div id="bibtex" class="column has-text-justified is-centered">
+                        <!-- https://github.com/SaswatPadhi/prismjs-bibtex -->
+                        <pre><code class="language-bibtex">@misc{sk2023qdiffusion,
+    title={Quantum Circuits for Gaussian Random Number Generation: A Non-parametric Approach to the Stable Diffusion Noise Corrupter.}, 
+    author={Shlomo Kashani},
+    year={2023},
+    eprint={},
+    archivePrefix={arXiv},
+    primaryClass={}
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <!-- TODO: UPDATE -->
+                <a class="icon-link" href="https://arxiv.org/" target="_blank">
+                    <i class="ai ai-arxiv"></i>
+                </a>
+                &nbsp;
+                <!-- TODO: UPDATE -->
+                <a class="icon-link" href="./static/docs/" target="_blank">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                
+                &nbsp;
+                <a class="icon-link" href="https://github.com/"
+                    target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- <div class="columns is-centered">
+                <div class="content">
+                    <p>
+                        Page source code was adapted from
+                        <a href="https://nerfies.github.io" target="_blank">here</a>
+                        and
+                        <a href="https://internet-explorer-ssl.github.io"
+                            target="_blank">here</a>,
+                        and can be found in <a
+                            href="https://github.com/diffusion-classifier/diffusion-classifier.github.io"
+                            target="_blank">this repository</a>.
+                    </p>
+                </div>
+            </div> -->
+    </footer>
+
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.0.1/prism-bibtex.js"
+        integrity="sha256-+dK6uqUp/DnP6ef97s8XcoynBnGe5vM5gvBECH0EB3U=" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
