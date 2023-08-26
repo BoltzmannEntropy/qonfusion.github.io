@@ -251,8 +251,10 @@
                     </h2>
                     <div class="content has-text-justified">
                         <p class="equation-text">
-                            We first utilize N qubits, with non-parametric quantum circuit generating a uniform distribution across
-                             2^N discrete values. The output is then fed to the following circuit: <br>
+                            Initially, we employ \( N \) qubits in a non-parametric quantum circuit to produce a uniform
+                            distribution over \( 2^N \) discrete outcomes. The resultant output serves as the input for the next quantum circuit:
+
+                             <br>
                             <img src="./static/images/QuantumRandomUniformGenerator_ansatz_qubits_3.png" alt="PennyLane quantum circuit"
                             class="method-overview-full-img  method-overview" draggable="false" width="75%"/><br>
                             The mathematical representation of this 3-qubit system undergoing a Hadamard transformation 
@@ -306,7 +308,7 @@
                         </p>
                         
                         <p class="equation-text">
-                            Here we provide the code:<br>
+                            Here we provide the respective code snippet:<br>
                             <code class="python">
 def Q_PQC_UNIFORM_DIST_ANZATS(weights, useRot=True):
     for i in range(n_qubits):
@@ -319,6 +321,23 @@ def Q_PQC_UNIFORM_DIST_ANZATS(weights, useRot=True):
                         for i in range(n_qubits)]
     return _expectations
                                 </code>
+                            <p>Our focus is on sampling techniques.
+                        The key difference between the expressions
+                        <code>\texttt{[qml.sample(qml.PauliZ(i)) for i in range(n\_qubits)]}</code> and
+                        <code>\texttt{[qml.expval(qml.PauliZ(i)) for i in range(n\_qubits)]}</code> lies
+                        in the type of result they produce<cite data-cite="bergholm2018pennylane"></cite>.
+                        The former yields a sampled measurement outcome, whereas the latter returns
+                        the expectation value. Specifically, <code>\texttt{qml.sample()}</code>
+                        performs a measurement on the qubit in the Pauli-Z basis, leading to the
+                        collapse of the wavefunction and <strong>randomly returning either 0 or 1</strong>,
+                        based on the inherent probabilities of the qubit state. Conversely,
+                        <code>\texttt{qml.expval()}</code> calculates the expectation value \( \langle Z \rangle \) of the
+                        Pauli-Z operator on the qubit, <strong>providing the average value</strong>
+                        one would expect to measure, without causing the wavefunction to collapse.
+                        In summary, <code>\texttt{qml.sample()}</code> gives a random measurement sample (0 or 1),
+                        while <code>\texttt{qml.expval()}</code> delivers the expected average value of a measurement
+                        (a value between 0 and 1). Sampling leads to the collapse of the quantum state,
+                        whereas expectation values allow for continued quantum operations.</p>
 
                              <a target="_blank"
                                 href="https://github.com/Stability-AI/stablediffusion">QonFusion source code</a>
