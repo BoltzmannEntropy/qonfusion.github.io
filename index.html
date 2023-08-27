@@ -304,10 +304,52 @@ Quantum Circuits for Gaussian Random Number Generation: A Non-parametric Approac
                                     </li>
                                 </ol>
                                 </p>
-                        </p>
-                        
+                                </p>
+
+                        <p>Let's consider a <b>numerical example</b> for the system. We'll use the following rotation angles for each qubit:</p>
+                            <ul>
+                              <li>\( \theta_1 = \frac{\pi}{4} \), \( \phi_1 = \frac{\pi}{2} \), \( \lambda_1 = \pi \)</li>
+                              <li>\( \theta_2 = \frac{\pi}{3} \), \( \phi_2 = \frac{\pi}{4} \), \( \lambda_2 = \frac{\pi}{2} \)</li>
+                              <li>\( \theta_3 = \frac{\pi}{6} \), \( \phi_3 = \frac{\pi}{3} \), \( \lambda_3 = \frac{\pi}{4} \)</li>
+                            </ul>
+
+                            <p>The Hadamard gate \( H \) is represented as:</p>
+                            \[
+                            H = \frac{1}{\sqrt{2}} \begin{pmatrix}
+                            1 & 1 \\
+                            1 & -1
+                            \end{pmatrix}
+                            \]
+
+                            <p>And a general rotation \( U(\theta, \phi, \lambda) \) is given by:</p>
+                            \[
+                            U(\theta, \phi, \lambda) = \begin{pmatrix}
+                            \cos(\frac{\theta}{2}) & -e^{i \lambda} \sin(\frac{\theta}{2}) \\
+                            e^{i \phi} \sin(\frac{\theta}{2}) & e^{i (\phi + \lambda)} \cos(\frac{\theta}{2})
+                            \end{pmatrix}
+                            \]
+
+                            <p>First, we'll find the initial state \( |\psi_{\text{initial}}\rangle \) after applying the Hadamard gates:</p>
+                            \[
+                            |\psi_{\text{initial}}\rangle = (H \otimes H \otimes H) |0\rangle^{\otimes 3} = \frac{1}{\sqrt{8}}(|000\rangle + |001\rangle + |010\rangle + |011\rangle + |100\rangle + |101\rangle + |110\rangle + |111\rangle)
+                            \]
+
+                            <p>Next, we'll find the unitary operation \( U_{\text{total}} \) for the Hadamard and rotation gates:</p>
+                            \[
+                            U_{\text{total}} = (U(\theta_1, \phi_1, \lambda_1) \otimes U(\theta_2, \phi_2, \lambda_2) \otimes U(\theta_3, \phi_3, \lambda_3)) \cdot (H \otimes H \otimes H)
+                            \]
+
+                            <p>Finally, we'll find the final state \( |\psi_{\text{final}}\rangle \):</p>
+                            \[
+                            |\psi_{\text{final}}\rangle = U_{\text{total}} |\psi_{\text{initial}}\rangle
+                            \]
+
+                            <p>Calculating \( |\psi_{\text{final}}\rangle \) would involve the PannyLane library.</p>
+
+
+
                         <p class="equation-text">
-                            Here we provide the respective code snippet:<br>
+                            Here we provide the respective code snippet for the second circuit:<br>
                             <code class="python">
 def Q_PQC_UNIFORM_DIST_ANZATS(weights, useRot=True):
     for i in range(n_qubits):
