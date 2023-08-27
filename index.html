@@ -232,7 +232,7 @@ Quantum Circuits for Gaussian Random Number Generation: A Non-parametric Approac
                             synergizes with PyTorch and PennyLane, thus forming a nexus between the quantum and classical domains. 
                             The rigor of our inquiry is corroborated through exhaustive statistical evaluations, 
                             encompassing Kolmogorov-Smirnov, Maximum Mean Discrepancy, Kullback-Leibler 
-                            divergence, and statistical permutation tests, thereby substantiating our
+                        divergence, and <b>statistical permutation tests </b>, thereby substantiating our
                             substantial contributions to the domain of quantum machine learning.  
                             <br><br> 
 
@@ -263,59 +263,47 @@ Quantum Circuits for Gaussian Random Number Generation: A Non-parametric Approac
                               <img src="./static/images/uni_fig_qubits_4.png" alt="PennyLane quantum circuit"
                             class="method-overview-full-img  method-overview" draggable="false" width="100%"/><br>
 
-                            The resultant uniform PDF output serves as the input (quantum rotations) for the next quantum circuit:
+                            The resultant uniform PDF output is transformed into quantum rotations:
+                            <img src="./static/images/fig_qubits_4.png" alt="PennyLane quantum circuit"
+                            class="method-overview-full-img  method-overview" draggable="false" width="75%"/><br>
+
+                            These are fed into the next quantum circuit:
 
                              <br>
                             <img src="./static/images/QuantumRandomUniformGenerator_ansatz_qubits_3.png" alt="PennyLane quantum circuit"
                             class="method-overview-full-img  method-overview" draggable="false" width="75%"/><br>
-                            The mathematical representation of this 3-qubit system undergoing a Hadamard transformation 
+                            The <b>mathematical representation</b> of this 3-qubit quantum system undergoing a Hadamard transformation
                             followed by rotations can be formulated as follows:<br>
                             <!-- Include MathJax script in the HTML head -->
 
                                 <!-- Include the equations in the HTML body -->
                                 <p>
-                                <!-- Hadamard Matrix -->
-                                The Hadamard matrix \( H \) is given by:
-                                \[
-                                \begin{equation}
-                                H = \frac{1}{\sqrt{2}} \left[ \begin{array}{cc} 1 & 1 \\ 1 & -1 \end{array} \right]
-                                \end{equation}
-                                \]
+                                <ol>
+                                    <li><strong>Initial State:</strong> The initial state of the three qubits is prepared by another quantum circuit consisting solely of Hadamard gates. Mathematically, this is represented as:
+                                        <div>
+                                            \[
+                                            |\psi_{\text{initial}}\rangle = (H \otimes H \otimes H) |0\rangle^{\otimes 3}.
+                                            \]
+                                        </div>
+                                    </li>
 
-                                <!-- 3-Qubit Hadamard Operation -->
-                                The 3-Qubit Hadamard operation \( H^{\otimes 3} \) is:
-                                \[
-                                \begin{equation}
-                                H^{\otimes 3} = H \otimes H \otimes H
-                                \end{equation}
-                                \]
+                                    <li><strong>Total Operation:</strong> The total unitary operation acting on the initial state consists of Hadamard gates followed by general rotations on each qubit. This is given by:
+                                        <div>
+                                            \[
+                                            U_{\text{total}} = (U(\theta_1, \phi_1, \lambda_1) \otimes U(\theta_2, \phi_2, \lambda_2) \otimes U(\theta_3, \phi_3, \lambda_3)) \cdot (H \otimes H \otimes H) \cdot (H \otimes H \otimes H).
+                                            \]
+                                        </div>
+                                    </li>
 
-                                <!-- General Rotation Operator -->
-                                The general rotation operator \( R(\theta, \phi, \lambda) \) is:
-                                \[
-                                \begin{equation}
-                                R(\theta, \phi, \lambda) = \left[ \begin{array}{cc} \cos\left(\frac{\theta}{2}\right) & -e^{i\lambda}\sin\left(\frac{\theta}{2}\right) \\ e^{i\phi}\sin\left(\frac{\theta}{2}\right) & e^{i(\phi+\lambda)}\cos\left(\frac{\theta}{2}\right) \end{array} \right]
-                                \end{equation}
-                                \]
-
-                                <!-- 3-Qubit Rotation Operation -->
-                                The 3-Qubit rotation operation \( R^{\otimes 3} \) is:
-                                \[
-                                \begin{equation}
-                                R^{\otimes 3} = R(\theta_1, \phi_1, \lambda_1) \otimes R(\theta_2, \phi_2, \lambda_2) \otimes R(\theta_3, \phi_3, \lambda_3)
-                                \end{equation}
-                                \]
-
-                                <!-- Complete 3-Qubit Operation -->
-                                The complete 3-Qubit operation \( |\psi'\rangle \) is:
-                                \[
-                                \begin{equation}
-                                |\psi'\rangle = (R^{\otimes 3} \otimes H^{\otimes 3}) |\psi\rangle
-                                \end{equation}
-                                \]
+                                    <li><strong>Final State:</strong> The final state of the system is then:
+                                        <div>
+                                            \[
+                                            |\psi_{\text{final}}\rangle = U_{\text{total}} |\psi_{\text{initial}}\rangle.
+                                            \]
+                                        </div>
+                                    </li>
+                                </ol>
                                 </p>
-
-
                         </p>
                         
                         <p class="equation-text">
@@ -351,7 +339,7 @@ def Q_PQC_UNIFORM_DIST_ANZATS(weights, useRot=True):
                         whereas expectation values allow for continued quantum operations.</p>
 
                         See: <a target="_blank"
-                                href="https://github.com/Stability-AI/stablediffusion">QonFusion source code.</a><br><br>
+                                href="https://boltzmannentropy.github.io/qonfusion.github.io/">QonFusion source code.</a><br><br>
                         </p>
 
                     </div>
