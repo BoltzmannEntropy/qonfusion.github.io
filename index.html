@@ -212,31 +212,35 @@ Quantum Circuits for Gaussian Random Number Generation:
                     <div class="content has-text-justified">
                         <p>
                             <p>
-                            In this research, we employ elementary non-parametric quantum ansätze to generate quantum Gaussian probabilistic samples, 
-                            taking advantage of superposition and thereby obviating the necessity for parameter training.
-                            Displayed here is an animation that illustrates a segment of the pipeline, along with the quantum noise that can be employed in the forward phase of an SD model:<br>
+                            In the current investigation, we harness the unique characteristics of quantum superposition,
+                        utilizing elementary non-parametric quantum circuits to generate Gaussian-distributed samples.
+                        This methodology diverges significantly from the prevalent use of parametric quantum circuits (PQCs),
+                        commonly integrated with variational quantum eigensolvers (VQEs). While PQCs exhibit remarkable performance
+                        in simulating the ground states of complex many-body systems and probabilistic learning,
+                        they require an intensive optimization process for parameter tuning, thus incurring substantial
+                        computational overhead. By adopting a non-parametric framework, we negate the necessity for such
+                        elaborate tuning.
+                         <br>
                             <img src="./static/images/ezgif-1-00a0e2b532.gif" alt="Quantum Gaussian Generator."
-                            class="method-overview-full-img  method-overview" draggable="false" />
+                            class="method-overview-full-img  method-overview" draggable="false" /> <br>
+
+
+                        Our research spans three distinct applications: firstly, serving as a quantum
+                        analogue for classical Random Number Generators (RNGs) like torch.rand; secondly,
+                        in the computational modeling of Brownian motion; and lastly, as an innovation for
+                        introducing noise perturbations in Stable Diffusion (SD) models. To facilitate the
+                        practical implementation of our approach, we present QonFusion, a specialized
+                        Python library engineered for compatibility with both PyTorch and PennyLane.
+                        This library serves as a conduit between classical and quantum computational models.
+                        The robustness of QonFusion has been empirically validated through a comprehensive suite
+                        of statistical tests, including Kolmogorov-Smirnov, Kullback-Leibler,
+                        Maximum Mean Discrepancy, and statistical permutation tests.
+                        These evaluations were structured to juxtapose quantum-generated Gaussian
+                        samples against their classical analogues, concluding that they are statistically
+                        indistinguishable within the chosen thresholds of significanceץ
 
                             </p><br>
-                            <p>
-                            The investigation introduces quantum counterparts in three distinct applications: 
-                            first, as a substitute for conventional random number generators such as <b>torch.rand</b>; 
-                            second, as a Gaussian noise perturbation in the forward phase of a Stable Diffusion (SD) model; 
-                            and third, in the emulation of reversible stochastic differential equations (SDEs), 
-                            reminiscent of Brownian motion. 
-                            </p><br>    
-                            
-                            <br>                            
-                            To support this endeavor, we crafted QonFusion, a resilient Python library that 
-                            synergizes with PyTorch and PennyLane, thus forming a nexus between the quantum and classical domains. 
-                            The rigor of our inquiry is corroborated through exhaustive statistical evaluations, 
-                            encompassing Kolmogorov-Smirnov, Maximum Mean Discrepancy, Kullback-Leibler 
-                        divergence, and <b>statistical permutation tests </b>, thereby substantiating our
-                            substantial contributions to the domain of quantum machine learning.  
-                            <br><br> 
-
-                            
+                            <br><br>
                         </p>                        
                     </div>
                 </div>
