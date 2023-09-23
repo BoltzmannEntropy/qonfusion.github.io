@@ -212,33 +212,25 @@ Quantum Circuits for Gaussian Random Number Generation:
                     <div class="content has-text-justified">
                         <p>
                             <p>
-                            In the current investigation, we harness the unique characteristics of quantum superposition,
-                        utilizing elementary non-parametric quantum circuits to generate Gaussian-distributed samples.
-                        This methodology diverges significantly from the prevalent use of parametric quantum circuits (PQCs),
-                        commonly integrated with variational quantum eigensolvers (VQEs). While PQCs exhibit remarkable performance
-                        in simulating the ground states of complex many-body systems and probabilistic learning,
-                        they require an intensive optimization process for parameter tuning, thus incurring substantial
-                        computational overhead. By adopting a non-parametric framework, we negate the necessity for such
-                        elaborate tuning.
+                           {In this investigation, we introduce a method based on non-parametric quantum circuits for generating Gaussian Random Variables (GRVs).
+                        This quantum-based methodology serves as an analogue to classical pseudorandom number generators (PRNGs),
+                        such as those implemented in PyTorch's \textbf{torch.rand}. Importantly, our quantum Gaussian generator
+                        holds dual functionality: it offers a new avenue for simulating Stable Diffusion (SD) as well as Diffusion
+                        Monte Carlo (DMC) techniques. Our approach stands in contrast to existing methods that employ parametric
+                        quantum circuits, often in conjunction with variational quantum eigensolvers. These prevalent methods,
+                        while effective for approximating the ground states of complex systems or learning intricate
+                        probability distributions, necessitate a cumbersome and computationally demanding parameter
+                        optimization phase. Our non-parametric approach eliminates this requirement. To facilitate the
+                        integration of our methodology into existing computational frameworks, we unveil a Python library,
+                        QonFusion. This library is designed for seamless compatibility with both PyTorch and PennyLane,
+                        serving as a nexus between classical and quantum computing paradigms. We validate the efficacy of
+                        QonFusion through a comprehensive suite of statistical tests, including Kolmogorov-Smirnov,
+                        Kullback-Leibler, Maximum Mean Discrepancy, and statistical permutation tests.
+                        These assessments affirm that the Gaussian samples generated via our quantum approach are statistically
+                        indistinguishable from their classical counterparts within established significance thresholds.
                          <br>
                             <img src="./static/images/ezgif-1-00a0e2b532.gif" alt="Quantum Gaussian Generator."
                             class="method-overview-full-img  method-overview" draggable="false" /> <br>
-
-
-                        Our research spans three distinct applications: firstly, serving as a quantum
-                        analogue for classical Random Number Generators (RNGs) like torch.rand; secondly,
-                        in the computational modeling of Brownian motion; and lastly, as an innovation for
-                        introducing noise perturbations in Stable Diffusion (SD) models. To facilitate the
-                        practical implementation of our approach, we present QonFusion, a specialized
-                        Python library engineered for compatibility with both PyTorch and PennyLane.
-                        This library serves as a conduit between classical and quantum computational models.
-                        The robustness of QonFusion has been empirically validated through a comprehensive suite
-                        of statistical tests, including Kolmogorov-Smirnov, Kullback-Leibler,
-                        Maximum Mean Discrepancy, and statistical permutation tests.
-                        These evaluations were structured to juxtapose quantum-generated Gaussian
-                        samples against their classical analogues, concluding that they are statistically
-                        indistinguishable within the chosen thresholds of significanceץ
-
                             </p><br>
                             <br><br>
                         </p>                        
